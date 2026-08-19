@@ -1,30 +1,44 @@
-# Forged Dark for Microsoft Edge
+# Forged Dark for Chromium Browsers
 
-Microsoft Edge theme using the dark palette from [Forged](https://forged.damienmurphy.net/).
+Chromium browser theme using the dark palette from [Forged](https://forged.damienmurphy.net/).
+
+> [!IMPORTANT]
+> This theme has been tested only on Microsoft Edge. Chrome, Brave, Vivaldi, Opera, and other Chromium-based browsers may render theme colors differently or reject unsupported manifest fields.
 
 ## Install
 
 1. Keep this repository in a permanent location.
-2. Open `edge://extensions`.
+2. Open the browser's extensions page:
+
+   | Browser | Extensions page |
+   | --- | --- |
+   | Microsoft Edge | `edge://extensions` |
+   | Google Chrome | `chrome://extensions` |
+   | Brave | `brave://extensions` |
+   | Vivaldi | `vivaldi://extensions` |
+   | Opera | `opera://extensions` |
+
 3. Enable **Developer mode**.
 4. Select **Load unpacked**.
 5. Select the repository root containing `manifest.json`.
 
+If the browser does not provide **Load unpacked**, consult its extension-development documentation. Do not package or convert the theme unless you have reviewed the browser's requirements.
+
 ## Verify
 
-1. Confirm **Forged Dark** appears in `edge://extensions`.
-2. Confirm the Edge frame and toolbar use the dark theme.
-3. Open `edge://settings/appearance` and confirm the theme is active.
+1. Confirm **Forged Dark** appears on the browser's extensions page.
+2. Confirm the browser frame and toolbar use the dark theme.
+3. Open the browser's appearance settings and confirm the theme is active.
 
-Edge displays a developer-mode warning for unpacked extensions. This is expected.
+The browser may display a developer-mode warning for unpacked extensions. This is expected.
 
 ## Remove
 
-1. Open `edge://extensions`.
+1. Open the browser's extensions page.
 2. Find **Forged Dark**.
 3. Select **Remove**.
 
-To keep the extension installed but disable its theme, open `edge://settings/appearance` and select the default theme.
+To keep the extension installed but disable its theme, open the browser's appearance settings and select its default theme.
 
 ## Validate changes
 
@@ -57,7 +71,7 @@ All theme resources are stored in this repository.
 
 ## Managed devices
 
-If Edge blocks developer mode or unpacked extensions, stop. Ask the device administrator to review and deploy the package through the organization's Edge extension policy. Do not bypass device-management controls.
+If the browser blocks developer mode or unpacked extensions, stop. Ask the device administrator to review and deploy the package through the organization's browser-extension policy. Do not bypass device-management controls.
 
 ## Palette
 
