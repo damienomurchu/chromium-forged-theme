@@ -6,9 +6,9 @@
       <stop offset="1" stop-color="#151a1d" stop-opacity=".6"/>
     </linearGradient>
     <radialGradient id="heat" cx="100%" cy="0" r="100%">
-      <stop offset="0" stop-color="#c98968" stop-opacity=".22"/>
-      <stop offset=".28" stop-color="#c98968" stop-opacity=".07"/>
-      <stop offset=".72" stop-color="#c98968" stop-opacity="0"/>
+      <stop offset="0" stop-color="#b97858" stop-opacity=".22"/>
+      <stop offset=".28" stop-color="#b97858" stop-opacity=".07"/>
+      <stop offset=".72" stop-color="#b97858" stop-opacity="0"/>
     </radialGradient>
     <pattern id="grain" width="48" height="48" patternUnits="userSpaceOnUse" patternTransform="skewX(-18)">
       <path d="M0 48 48 0M24 72 72 24M-24 24 24-24" fill="none" stroke="#cbd0cd" stroke-opacity=".018"/>
@@ -19,7 +19,7 @@
   <rect width="3000" height="200" fill="url(#grain)"/>
   <g transform="translate(2820 34)" opacity=".68">
     <rect x="0" y="0" width="8" height="124" rx="4" fill="#3a444a"/>
-    <path d="M14 10h102v20H38v28h64v20H38v46H14z" fill="#c98968"/>
+    <path d="M14 10h102v20H38v28h64v20H38v46H14z" fill="#b97858"/>
   </g>
   <path d="M0 199.5h3000" stroke="#3a444a"/>
 </svg>
