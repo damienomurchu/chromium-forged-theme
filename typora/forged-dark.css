@@ -1,0 +1,753 @@
+/*
+ * Forged Dark for Typora
+ * Based on https://forged.damienmurphy.net
+ *
+ * Design language:
+ *   Canvas       #1b2024
+ *   Surface      #272e33
+ *   Border       #3a444a
+ *   Text         #cbd0cd
+ *   Muted text   #98a3a8
+ *   Forged accent #c98968
+ *
+ * Document typography: Source Serif 4
+ * Application and code typography: IBM Plex Mono
+ */
+
+:root {
+  --forged-background: #1b2024;
+  --forged-surface: #272e33;
+  --forged-surface-raised: #30383d;
+  --forged-border: #3a444a;
+  --forged-border-subtle: #30383d;
+  --forged-foreground: #cbd0cd;
+  --forged-heading-color: #cbd0cd;
+  --forged-muted: #98a3a8;
+  --forged-faint: #667075;
+  --forged-accent: #c98968;
+  --forged-accent-soft: rgba(201, 137, 104, 0.15);
+  --forged-accent-foreground: #1c1410;
+  --forged-selection: rgba(201, 137, 104, 0.42);
+  --forged-danger: #e06c75;
+  --forged-success: #8fbd87;
+  --forged-info: #72a7b6;
+  --forged-code-background: #151a1d;
+  --forged-code-foreground: #cbd0cd;
+  --forged-shadow: rgba(0, 0, 0, 0.28);
+
+  --forged-prose: "Source Serif 4", "Source Serif Pro", Georgia, serif;
+  --forged-heading-font: var(--forged-prose);
+  --forged-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Typora variables */
+  --bg-color: var(--forged-background);
+  --text-color: var(--forged-foreground);
+  --md-char-color: var(--forged-faint);
+  --meta-content-color: var(--forged-muted);
+  --primary-color: var(--forged-accent);
+  --primary-btn-border-color: var(--forged-accent);
+  --primary-btn-text-color: var(--forged-accent-foreground);
+  --window-border: 1px solid var(--forged-border);
+  --active-file-bg-color: var(--forged-accent-soft);
+  --active-file-text-color: var(--forged-heading-color);
+  --active-file-border-color: var(--forged-accent);
+  --side-bar-bg-color: var(--forged-surface);
+  --item-hover-bg-color: var(--forged-surface-raised);
+  --item-hover-text-color: var(--forged-heading-color);
+  --control-text-color: var(--forged-muted);
+  --control-text-hover-color: var(--forged-heading-color);
+  --rawblock-edit-panel-bd: var(--forged-code-background);
+  --search-select-bg-color: var(--forged-accent-soft);
+  --select-text-bg-color: var(--forged-selection);
+  --select-text-font-color: var(--forged-heading-color);
+  --monospace: var(--forged-mono);
+}
+
+html,
+body,
+#typora-sidebar,
+.typora-node,
+.content {
+  background: var(--forged-background);
+  color: var(--forged-foreground);
+}
+
+html,
+body {
+  font-family: var(--forged-mono);
+}
+
+html {
+  font-size: 132%;
+}
+
+body {
+  caret-color: var(--forged-accent);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--forged-selection);
+  color: var(--forged-heading-color);
+}
+
+/* Writing surface */
+
+#write {
+  max-width: 72ch;
+  min-height: calc(100vh - 4rem);
+  margin: 0 auto;
+  padding: 4.5rem 2.25rem 7rem;
+  font-family: var(--forged-prose);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--forged-foreground);
+}
+
+#write > :first-child {
+  margin-top: 0;
+}
+
+#write p {
+  margin: 1.25em 0;
+}
+
+#write h1,
+#write h2,
+#write h3,
+#write h4 {
+  color: var(--forged-heading-color);
+  font-family: var(--forged-heading-font);
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  line-height: 1.25;
+}
+
+#write h1 {
+  margin: 0 0 1.2em;
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+#write h2 {
+  margin: 2.8rem 0 1.25rem;
+  padding: 0;
+  border-bottom: 0;
+  font-size: 1.7rem;
+  line-height: 1.2;
+}
+
+#write h3 {
+  margin: 2.5rem 0 0.75rem;
+  font-size: 1.35rem;
+  line-height: 1.35;
+  font-style: italic;
+}
+
+#write h4 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+
+#write h5,
+#write h6 {
+  margin: 1.5em 0 0.45em;
+  font-family: var(--forged-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#write h5 {
+  color: var(--forged-accent);
+}
+
+#write h6 {
+  color: var(--forged-muted);
+}
+
+#write strong {
+  color: var(--forged-heading-color);
+  font-weight: 600;
+}
+
+#write em {
+  color: var(--forged-foreground);
+}
+
+#write a {
+  color: var(--forged-accent);
+  text-decoration-color: rgba(201, 137, 104, 0.55);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
+#write a:hover {
+  color: #dda184;
+  text-decoration-color: currentColor;
+}
+
+#write hr {
+  height: 1px;
+  margin: 3rem 0;
+  border: 0;
+  background: var(--forged-border);
+}
+
+/* Quotes and callouts */
+
+#write blockquote {
+  margin: 1.8em 0;
+  padding: 0.1em 0 0.1em 1.25em;
+  border-left: 3px solid var(--forged-accent);
+  color: var(--forged-muted);
+  font-style: italic;
+}
+
+#write blockquote blockquote {
+  border-left-color: var(--forged-border);
+}
+
+#write blockquote p:first-child {
+  margin-top: 0;
+}
+
+#write blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+#write mark {
+  padding: 0.08em 0.22em;
+  border-radius: 2px;
+  background: var(--forged-accent-soft);
+  color: var(--forged-heading-color);
+}
+
+/* Lists and tasks */
+
+#write ul,
+#write ol {
+  margin: 1.25em 0;
+  padding-left: 1.7em;
+}
+
+#write li {
+  margin: 0.42em 0;
+  padding-left: 0.2em;
+}
+
+#write li::marker {
+  color: var(--forged-accent);
+}
+
+#write .task-list-item {
+  padding-left: 0.25em;
+}
+
+#write input[type="checkbox"] {
+  width: 0.95em;
+  height: 0.95em;
+  margin-right: 0.5em;
+  border: 1px solid var(--forged-border);
+  border-radius: 2px;
+  background: var(--forged-surface);
+  accent-color: var(--forged-accent);
+}
+
+#write .task-list-done {
+  color: var(--forged-faint);
+  text-decoration-color: var(--forged-faint);
+}
+
+/* Inline code and fenced code */
+
+#write code,
+#write kbd,
+#write samp {
+  font-family: var(--forged-mono);
+}
+
+#write :not(pre) > code {
+  padding: 0.12em 0.32em;
+  border: 0;
+  border-radius: 4px;
+  background: rgba(39, 46, 51, 0.75);
+  color: var(--forged-foreground);
+  font-family: var(--forged-mono);
+  font-size: 0.84em;
+  font-weight: 400;
+}
+
+#write kbd {
+  padding: 0.12em 0.4em;
+  border: 1px solid var(--forged-border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--forged-surface-raised);
+  color: var(--forged-heading-color);
+  font-size: 0.78em;
+  box-shadow: 0 1px 0 var(--forged-shadow);
+}
+
+.md-fences,
+#write pre.md-meta-block {
+  margin: 1.8em 0;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--forged-border);
+  border-radius: 6px;
+  background: var(--forged-code-background);
+  color: var(--forged-code-foreground);
+  font-family: var(--forged-mono);
+  font-size: 0.86rem;
+  line-height: 1.65;
+  box-shadow: 0 8px 28px -22px var(--forged-shadow);
+}
+
+.md-fences .code-tooltip,
+.md-fences .code-tooltip-content,
+.md-fences .code-tooltip-autocomplete {
+  border-color: var(--forged-border);
+  background: var(--forged-surface-raised);
+  color: var(--forged-foreground);
+}
+
+.md-fences .CodeMirror-gutters {
+  border-right: 1px solid var(--forged-border-subtle);
+  background: var(--forged-code-background);
+}
+
+.md-fences .CodeMirror-linenumber {
+  color: var(--forged-faint);
+}
+
+.cm-s-inner.CodeMirror,
+.cm-s-inner .CodeMirror-gutters {
+  background: transparent;
+  color: var(--forged-code-foreground);
+}
+
+.cm-s-inner .CodeMirror-cursor {
+  border-left-color: var(--forged-accent);
+}
+
+.cm-s-inner div.CodeMirror-selected,
+.cm-s-inner.CodeMirror-focused div.CodeMirror-selected {
+  background: var(--forged-selection);
+}
+
+/* Syntax palette: warm, restrained, readable. */
+.cm-s-inner .cm-comment,
+.cm-s-inner .cm-quote {
+  color: #758087;
+  font-style: italic;
+}
+
+.cm-s-inner .cm-keyword,
+.cm-s-inner .cm-operator,
+.cm-s-inner .cm-tag {
+  color: #d28d70;
+}
+
+.cm-s-inner .cm-string,
+.cm-s-inner .cm-string-2,
+.cm-s-inner .cm-attribute {
+  color: #aabf8a;
+}
+
+.cm-s-inner .cm-number,
+.cm-s-inner .cm-atom,
+.cm-s-inner .cm-builtin {
+  color: #c4a67a;
+}
+
+.cm-s-inner .cm-def,
+.cm-s-inner .cm-variable-2,
+.cm-s-inner .cm-property {
+  color: #79a9b3;
+}
+
+.cm-s-inner .cm-variable,
+.cm-s-inner .cm-variable-3 {
+  color: var(--forged-code-foreground);
+}
+
+.cm-s-inner .cm-meta,
+.cm-s-inner .cm-qualifier {
+  color: #a595bd;
+}
+
+.cm-s-inner .cm-error {
+  color: var(--forged-danger);
+  text-decoration: underline wavy;
+}
+
+/* Tables */
+
+#write table {
+  width: 100%;
+  margin: 2em 0;
+  border-collapse: collapse;
+  font-family: var(--forged-prose);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+#write th,
+#write td {
+  padding: 0.72rem 0.8rem;
+  border: 1px solid var(--forged-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+#write th {
+  background: var(--forged-surface-raised);
+  color: var(--forged-heading-color);
+  font-family: var(--forged-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+#write tr:nth-child(even) td {
+  background: rgba(39, 46, 51, 0.42);
+}
+
+#write tr:hover td {
+  background: var(--forged-accent-soft);
+}
+
+/* Media, equations, metadata and footnotes */
+
+#write img {
+  border: 1px solid var(--forged-border);
+  border-radius: 6px;
+}
+
+#write .md-image > .md-meta {
+  color: var(--forged-faint);
+  font-family: var(--forged-mono);
+}
+
+#write figcaption,
+#write .md-image + em {
+  color: var(--forged-muted);
+  font-family: var(--forged-mono);
+  font-size: 0.78rem;
+}
+
+.md-meta-block,
+.md-footnote,
+.md-def-name,
+.md-def-content,
+.md-htmlblock,
+.md-comment {
+  color: var(--forged-muted);
+  font-family: var(--forged-mono);
+}
+
+.md-footnote {
+  background: var(--forged-accent-soft);
+  color: var(--forged-accent);
+}
+
+.md-mathblock,
+.mathjax-block {
+  color: var(--forged-foreground);
+}
+
+/* Markdown source indicators */
+
+.md-char,
+.md-meta,
+.md-link,
+.md-url,
+.md-comment,
+.md-inline-math,
+.md-mathblock {
+  color: var(--forged-faint);
+  font-family: var(--forged-mono);
+}
+
+.md-expand .md-meta,
+.md-expand .md-char {
+  color: var(--forged-accent);
+}
+
+/* Sidebar, file tree and outline */
+
+#typora-sidebar {
+  border-right: 1px solid var(--forged-border);
+  background: var(--forged-surface);
+  color: var(--forged-muted);
+  font-family: var(--forged-mono);
+}
+
+.sidebar-tabs,
+.sidebar-tabs-content,
+.sidebar-content,
+.file-library-node,
+.file-library-node .file-node-content,
+.outline-content {
+  background: var(--forged-surface);
+}
+
+.sidebar-tabs {
+  border-bottom: 1px solid var(--forged-border);
+}
+
+.sidebar-tab-btn {
+  color: var(--forged-faint);
+}
+
+.sidebar-tab-btn:hover,
+.sidebar-tab-btn.active {
+  color: var(--forged-accent);
+}
+
+.file-node-content,
+.outline-item {
+  border-left: 2px solid transparent;
+  color: var(--forged-muted);
+}
+
+.file-node-content:hover,
+.outline-item:hover {
+  background: var(--forged-surface-raised);
+  color: var(--forged-heading-color);
+}
+
+.file-node-content.active,
+.file-node-content.active:hover,
+.outline-item-active {
+  border-left-color: var(--forged-accent);
+  background: var(--forged-accent-soft);
+  color: var(--forged-heading-color);
+}
+
+.file-node-icon,
+.file-node-open-state,
+.outline-expander {
+  color: var(--forged-faint);
+}
+
+.file-node-title,
+.outline-label {
+  font-size: 0.82rem;
+}
+
+#file-library-search-input,
+.sidebar-search input {
+  border: 1px solid var(--forged-border);
+  background: var(--forged-background);
+  color: var(--forged-heading-color);
+}
+
+/* Window chrome and interactive surfaces */
+
+#top-titlebar,
+#top-titlebar:hover,
+.typora-sourceview-on #toggle-sourceview-btn,
+.megamenu-opened header {
+  border-color: var(--forged-border);
+  background: var(--forged-background);
+  color: var(--forged-muted);
+}
+
+.dropdown-menu,
+.context-menu,
+.modal-content,
+.popover,
+.tooltip-inner,
+.auto-suggest-container,
+#typora-quick-open,
+#typora-quick-open .typora-quick-open-list {
+  border: 1px solid var(--forged-border);
+  background: var(--forged-surface);
+  color: var(--forged-foreground);
+  box-shadow: 0 14px 38px var(--forged-shadow);
+}
+
+.dropdown-menu > li > a,
+.context-menu li,
+.typora-quick-open-item {
+  color: var(--forged-foreground);
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > .active > a,
+.context-menu li:hover,
+.typora-quick-open-item:hover,
+.typora-quick-open-item.active {
+  background: var(--forged-accent-soft);
+  color: var(--forged-heading-color);
+}
+
+input,
+textarea,
+select,
+.form-control {
+  border-color: var(--forged-border);
+  background: var(--forged-background);
+  color: var(--forged-foreground);
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+.form-control:focus {
+  border-color: var(--forged-accent);
+  box-shadow: 0 0 0 2px var(--forged-accent-soft);
+}
+
+button,
+.btn,
+.btn-default {
+  border-color: var(--forged-border);
+  background: var(--forged-surface);
+  color: var(--forged-foreground);
+}
+
+button:hover,
+.btn:hover,
+.btn-default:hover {
+  border-color: var(--forged-accent);
+  background: var(--forged-surface-raised);
+  color: var(--forged-heading-color);
+}
+
+.btn-primary {
+  border-color: var(--forged-accent);
+  background: var(--forged-accent);
+  color: var(--forged-accent-foreground);
+}
+
+.btn-primary:hover {
+  border-color: #dda184;
+  background: #dda184;
+  color: var(--forged-accent-foreground);
+}
+
+/* Source mode */
+
+#typora-source {
+  background: var(--forged-background);
+  color: var(--forged-foreground);
+  font-family: var(--forged-mono);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.typora-sourceview-on #toggle-sourceview-btn {
+  color: var(--forged-accent);
+}
+
+/* Focus and typewriter modes */
+
+.on-focus-mode #write > * {
+  opacity: 0.28;
+  transition: opacity 120ms ease;
+}
+
+.on-focus-mode #write > *.md-focus,
+.on-focus-mode #write > *:focus-within {
+  opacity: 1;
+}
+
+.on-typewriter-mode #write {
+  padding-bottom: 50vh;
+}
+
+/* Scrollbars */
+
+* {
+  scrollbar-color: var(--forged-faint) transparent;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background: var(--forged-faint);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--forged-muted);
+  background-clip: padding-box;
+}
+
+/* Keep printed and PDF-exported documents readable and ink-efficient. */
+
+@media print {
+  :root {
+    --forged-background: #ffffff;
+    --forged-surface: #f3f1ec;
+    --forged-surface-raised: #ebe8e1;
+    --forged-border: #cbc6bb;
+    --forged-border-subtle: #dedad1;
+    --forged-foreground: #34393a;
+    --forged-heading-color: #1b2024;
+    --forged-muted: #667075;
+    --forged-faint: #7c8589;
+    --forged-accent: #9b5e40;
+    --forged-accent-soft: rgba(155, 94, 64, 0.1);
+    --forged-code-background: #f3f1ec;
+    --forged-code-foreground: #34393a;
+  }
+
+  html,
+  body,
+  #write {
+    background: #ffffff !important;
+    color: var(--forged-foreground) !important;
+  }
+
+  #write {
+    max-width: none;
+    padding: 0;
+    font-size: 14.52pt;
+  }
+
+  #write a {
+    color: var(--forged-foreground);
+    text-decoration: underline;
+  }
+
+  .md-fences,
+  #write pre.md-meta-block {
+    border-color: var(--forged-border);
+    background: var(--forged-code-background) !important;
+    color: var(--forged-code-foreground) !important;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 760px) {
+  #write {
+    padding: 2.5rem 1.35rem 5rem;
+    font-size: 1rem;
+  }
+
+  #write h1 {
+    font-size: 2.15rem;
+  }
+
+  #write h2 {
+    font-size: 1.55rem;
+  }
+}

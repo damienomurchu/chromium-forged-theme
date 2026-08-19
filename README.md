@@ -8,7 +8,7 @@ Dark themes based on the palette from [Forged](https://forged.damienmurphy.net/)
 | --- | --- | --- |
 | Chromium browsers | [`chromium/`](chromium/) | Available; tested only on Microsoft Edge |
 | Obsidian | [`obsidian/`](obsidian/) | Planned |
-| Typora | [`typora/`](typora/) | Planned |
+| Typora | [`typora/`](typora/) | Available |
 
 Open the target directory for installation, validation, and compatibility instructions.
 
