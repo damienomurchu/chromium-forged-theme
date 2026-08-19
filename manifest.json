@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Forged Dark",
+  "version": "1.0.0",
+  "description": "A quiet, copper-accented Microsoft Edge theme based on the Forged blog dark palette.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "theme": {
+    "colors": {
+      "frame": [27, 32, 36],
+      "frame_inactive": [31, 37, 41],
+      "toolbar": [27, 32, 36],
+      "tab_text": [203, 208, 205],
+      "tab_background_text": [160, 169, 166],
+      "bookmark_text": [203, 208, 205],
+      "ntp_background": [27, 32, 36],
+      "ntp_text": [203, 208, 205],
+      "button_background": [39, 46, 51]
+    },
+    "tints": {
+      "buttons": [0.055, 0.42, 0.60]
+    }
+  }
+}
