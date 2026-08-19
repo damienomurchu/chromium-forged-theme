@@ -1,0 +1,29 @@
+{
+  "name": "forged-dark-theme",
+  "displayName": "Forged Dark",
+  "description": "A quiet, copper-accented dark theme based on the Forged blog palette.",
+  "version": "1.0.0",
+  "publisher": "damienmurphy",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark theme",
+    "forged",
+    "copper"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Forged Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/forged-dark-color-theme.json"
+      }
+    ]
+  }
+}

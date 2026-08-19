@@ -10,6 +10,7 @@ Dark themes based on the palette from [Forged](https://forged.damienmurphy.net/)
 | Firefox | [`firefox/`](firefox/) | Available; ready for local testing |
 | Obsidian | [`obsidian/`](obsidian/) | Available as a CSS snippet |
 | Typora | [`typora/`](typora/) | Available |
+| VS Code | [`vscode/`](vscode/) | Available as a local extension |
 
 Open the target directory for installation, validation, and compatibility instructions.
 
