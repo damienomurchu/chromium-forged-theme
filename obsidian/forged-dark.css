@@ -1,0 +1,462 @@
+/*
+ * Forged Dark for Obsidian
+ * Companion to forged-dark.css for Typora.
+ *
+ * Install as a CSS snippet:
+ *   <vault>/.obsidian/snippets/forged-dark.css
+ * Then enable it in Settings > Appearance > CSS snippets.
+ *
+ * Recommended fonts:
+ *   Text: Source Serif 4
+ *   Interface/code: IBM Plex Mono
+ */
+
+.theme-dark {
+  /* Forged palette */
+  --forged-background: #1b2024;
+  --forged-surface: #272e33;
+  --forged-surface-raised: #30383d;
+  --forged-border: #3a444a;
+  --forged-border-subtle: #30383d;
+  --forged-foreground: #cbd0cd;
+  --forged-heading: #cbd0cd;
+  --forged-muted: #98a3a8;
+  --forged-faint: #667075;
+  --forged-accent: #c98968;
+  --forged-accent-hover: #dda184;
+  --forged-accent-soft: rgba(201, 137, 104, 0.15);
+  --forged-selection: rgba(201, 137, 104, 0.42);
+  --forged-danger: #e06c75;
+  --forged-success: #8fbd87;
+  --forged-info: #72a7b6;
+  --forged-code-background: #151a1d;
+  --forged-shadow: rgba(0, 0, 0, 0.28);
+  --forged-prose: "Source Serif 4", "Source Serif Pro", Georgia, serif;
+  --forged-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Obsidian colour system */
+  --background-primary: var(--forged-background);
+  --background-primary-alt: #20262a;
+  --background-secondary: var(--forged-surface);
+  --background-secondary-alt: #22292d;
+  --background-modifier-hover: var(--forged-surface-raised);
+  --background-modifier-active-hover: var(--forged-accent-soft);
+  --background-modifier-border: var(--forged-border);
+  --background-modifier-border-hover: #4b575e;
+  --background-modifier-border-focus: var(--forged-accent);
+  --background-modifier-form-field: var(--forged-background);
+  --background-modifier-form-field-highlighted: var(--forged-surface-raised);
+  --background-modifier-box-shadow: var(--forged-shadow);
+  --background-modifier-cover: rgba(10, 13, 15, 0.72);
+
+  --text-normal: var(--forged-foreground);
+  --text-muted: var(--forged-muted);
+  --text-faint: var(--forged-faint);
+  --text-on-accent: #1c1410;
+  --text-on-accent-inverted: var(--forged-foreground);
+  --text-error: var(--forged-danger);
+  --text-success: var(--forged-success);
+  --text-warning: #c4a67a;
+  --text-accent: var(--forged-accent);
+  --text-accent-hover: var(--forged-accent-hover);
+  --interactive-normal: var(--forged-surface);
+  --interactive-hover: var(--forged-surface-raised);
+  --interactive-accent: var(--forged-accent);
+  --interactive-accent-hover: var(--forged-accent-hover);
+  --interactive-success: var(--forged-success);
+
+  --titlebar-background: var(--forged-background);
+  --titlebar-background-focused: var(--forged-background);
+  --tab-container-background: var(--forged-background);
+  --tab-outline-color: var(--forged-border);
+  --tab-text-color: var(--forged-muted);
+  --tab-text-color-active: var(--forged-heading);
+  --tab-text-color-focused-active: var(--forged-heading);
+  --tab-background-active: var(--forged-background);
+  --ribbon-background: var(--forged-surface);
+  --divider-color: var(--forged-border);
+  --divider-color-hover: var(--forged-accent);
+  --icon-color: var(--forged-muted);
+  --icon-color-hover: var(--forged-heading);
+  --icon-color-active: var(--forged-accent);
+  --nav-item-color: var(--forged-muted);
+  --nav-item-color-hover: var(--forged-heading);
+  --nav-item-color-active: var(--forged-heading);
+  --nav-item-background-hover: var(--forged-surface-raised);
+  --nav-item-background-active: var(--forged-accent-soft);
+
+  /* Typography mirrors the 20%-enlarged Typora theme. */
+  --font-interface-theme: var(--forged-mono);
+  --font-text-theme: var(--forged-prose);
+  --font-monospace-theme: var(--forged-mono);
+  --font-text-size: 20.4px;
+  --font-ui-smaller: 12px;
+  --font-ui-small: 13px;
+  --font-ui-medium: 14px;
+  --font-ui-large: 18px;
+  --line-height-normal: 1.75;
+  --line-height-tight: 1.35;
+  --file-line-width: 72ch;
+
+  --h1-color: var(--forged-heading);
+  --h2-color: var(--forged-heading);
+  --h3-color: var(--forged-heading);
+  --h4-color: var(--forged-heading);
+  --h5-color: var(--forged-accent);
+  --h6-color: var(--forged-muted);
+  --h1-font: var(--forged-prose);
+  --h2-font: var(--forged-prose);
+  --h3-font: var(--forged-prose);
+  --h4-font: var(--forged-prose);
+  --h5-font: var(--forged-mono);
+  --h6-font: var(--forged-mono);
+  --h1-size: 3.12rem;
+  --h2-size: 2.04rem;
+  --h3-size: 1.62rem;
+  --h4-size: 1.35rem;
+  --h5-size: 0.984rem;
+  --h6-size: 0.984rem;
+  --h1-weight: 700;
+  --h2-weight: 600;
+  --h3-weight: 600;
+  --h4-weight: 600;
+  --h5-weight: 600;
+  --h6-weight: 600;
+
+  --link-color: var(--forged-accent);
+  --link-color-hover: var(--forged-accent-hover);
+  --link-external-color: var(--forged-accent);
+  --link-external-color-hover: var(--forged-accent-hover);
+  --link-unresolved-color: var(--forged-muted);
+  --link-unresolved-decoration-color: var(--forged-faint);
+  --tag-color: var(--forged-accent);
+  --tag-background: var(--forged-accent-soft);
+  --tag-background-hover: rgba(201, 137, 104, 0.24);
+  --tag-border-color: transparent;
+
+  --code-normal: var(--forged-foreground);
+  --code-background: var(--forged-code-background);
+  --code-comment: #758087;
+  --code-function: #79a9b3;
+  --code-important: #d28d70;
+  --code-keyword: #d28d70;
+  --code-operator: #d28d70;
+  --code-property: #79a9b3;
+  --code-punctuation: var(--forged-muted);
+  --code-string: #aabf8a;
+  --code-tag: #d28d70;
+  --code-value: #c4a67a;
+
+  --blockquote-border-color: var(--forged-accent);
+  --blockquote-color: var(--forged-muted);
+  --hr-color: var(--forged-border);
+  --table-border-color: var(--forged-border);
+  --table-header-background: var(--forged-surface-raised);
+  --table-row-alt-background: rgba(39, 46, 51, 0.42);
+  --table-row-background-hover: var(--forged-accent-soft);
+  --checkbox-color: var(--forged-accent);
+  --checkbox-color-hover: var(--forged-accent-hover);
+  --checkbox-border-color: var(--forged-border);
+  --checklist-done-color: var(--forged-faint);
+  --list-marker-color: var(--forged-accent);
+  --list-marker-color-hover: var(--forged-accent-hover);
+  --list-marker-color-collapsed: var(--forged-muted);
+  --metadata-background: var(--forged-surface);
+  --metadata-border-color: var(--forged-border);
+  --metadata-label-text-color: var(--forged-muted);
+  --metadata-input-text-color: var(--forged-foreground);
+}
+
+.theme-dark ::selection {
+  background: var(--forged-selection);
+  color: var(--forged-heading);
+}
+
+/* Editor and reading surface */
+.theme-dark .markdown-source-view,
+.theme-dark .markdown-reading-view {
+  font-family: var(--forged-prose);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.theme-dark .markdown-preview-view,
+.theme-dark .markdown-source-view.mod-cm6 .cm-scroller {
+  line-height: 1.75;
+}
+
+.theme-dark .markdown-preview-sizer,
+.theme-dark .markdown-source-view.mod-cm6 .cm-contentContainer {
+  max-width: 72ch;
+}
+
+.theme-dark .inline-title {
+  margin-bottom: 1.2em;
+  color: var(--forged-heading);
+  font-family: var(--forged-prose);
+  font-size: 3.12rem;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.theme-dark .markdown-rendered h1,
+.theme-dark .markdown-rendered h2,
+.theme-dark .markdown-rendered h3,
+.theme-dark .markdown-rendered h4,
+.theme-dark .HyperMD-header-1,
+.theme-dark .HyperMD-header-2,
+.theme-dark .HyperMD-header-3,
+.theme-dark .HyperMD-header-4 {
+  letter-spacing: -0.018em;
+}
+
+.theme-dark .markdown-rendered h1,
+.theme-dark .HyperMD-header-1 {
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.theme-dark .markdown-rendered h2 {
+  margin-top: 2.8rem;
+  border-bottom: 0;
+}
+
+.theme-dark .markdown-rendered h3,
+.theme-dark .HyperMD-header-3 {
+  font-style: italic;
+}
+
+.theme-dark .markdown-rendered h5,
+.theme-dark .markdown-rendered h6,
+.theme-dark .HyperMD-header-5,
+.theme-dark .HyperMD-header-6 {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.theme-dark .markdown-rendered p {
+  margin-block: 1.25em;
+}
+
+.theme-dark .markdown-rendered strong,
+.theme-dark .cm-strong {
+  color: var(--forged-heading);
+  font-weight: 600;
+}
+
+.theme-dark .markdown-rendered a {
+  text-decoration-color: rgba(201, 137, 104, 0.55);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
+.theme-dark .markdown-rendered blockquote {
+  padding: 0.1em 0 0.1em 1.25em;
+  color: var(--forged-muted);
+  font-style: italic;
+}
+
+.theme-dark mark,
+.theme-dark .cm-highlight {
+  padding: 0.08em 0.22em;
+  border-radius: 2px;
+  background: var(--forged-accent-soft);
+  color: var(--forged-heading);
+}
+
+.theme-dark .markdown-rendered code,
+.theme-dark .cm-inline-code {
+  padding: 0.12em 0.32em;
+  border-radius: 4px;
+  background: rgba(39, 46, 51, 0.75);
+  color: var(--forged-foreground);
+  font-family: var(--forged-mono);
+  font-size: 0.84em;
+}
+
+.theme-dark .markdown-rendered pre,
+.theme-dark .HyperMD-codeblock {
+  border-color: var(--forged-border);
+  background: var(--forged-code-background);
+  font-family: var(--forged-mono);
+}
+
+.theme-dark .markdown-rendered pre {
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--forged-border);
+  border-radius: 6px;
+  box-shadow: 0 8px 28px -22px var(--forged-shadow);
+  line-height: 1.65;
+}
+
+.theme-dark .markdown-rendered img {
+  border: 1px solid var(--forged-border);
+  border-radius: 6px;
+}
+
+.theme-dark .markdown-rendered th {
+  color: var(--forged-heading);
+  font-family: var(--forged-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* Callouts */
+.theme-dark .callout {
+  --callout-color: 114, 167, 182;
+  border: 1px solid rgba(var(--callout-color), 0.36);
+  border-radius: 6px;
+  background: rgba(var(--callout-color), 0.09);
+}
+
+.theme-dark .callout[data-callout="warning"],
+.theme-dark .callout[data-callout="caution"],
+.theme-dark .callout[data-callout="attention"] {
+  --callout-color: 196, 166, 122;
+}
+
+.theme-dark .callout[data-callout="success"],
+.theme-dark .callout[data-callout="check"],
+.theme-dark .callout[data-callout="done"] {
+  --callout-color: 143, 189, 135;
+}
+
+.theme-dark .callout[data-callout="danger"],
+.theme-dark .callout[data-callout="error"],
+.theme-dark .callout[data-callout="bug"] {
+  --callout-color: 224, 108, 117;
+}
+
+.theme-dark .callout-title {
+  font-family: var(--forged-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* Workspace chrome */
+.theme-dark .workspace-tab-header.is-active {
+  box-shadow: inset 0 -2px 0 var(--forged-accent);
+}
+
+.theme-dark .workspace-tab-header-container,
+.theme-dark .workspace-ribbon,
+.theme-dark .status-bar {
+  border-color: var(--forged-border);
+}
+
+.theme-dark .nav-file-title,
+.theme-dark .nav-folder-title,
+.theme-dark .tree-item-self,
+.theme-dark .status-bar,
+.theme-dark .workspace-tab-header-inner-title {
+  font-family: var(--forged-mono);
+}
+
+.theme-dark .nav-file-title.is-active {
+  border-left: 2px solid var(--forged-accent);
+}
+
+.theme-dark .nav-file-title:hover,
+.theme-dark .nav-folder-title:hover,
+.theme-dark .tree-item-self:hover {
+  color: var(--forged-heading);
+}
+
+.theme-dark .suggestion-container,
+.theme-dark .menu,
+.theme-dark .modal,
+.theme-dark .popover,
+.theme-dark .prompt {
+  border: 1px solid var(--forged-border);
+  background: var(--forged-surface);
+  box-shadow: 0 14px 38px var(--forged-shadow);
+}
+
+.theme-dark .suggestion-item.is-selected,
+.theme-dark .menu-item.selected,
+.theme-dark .menu-item:hover {
+  background: var(--forged-accent-soft);
+  color: var(--forged-heading);
+}
+
+.theme-dark input,
+.theme-dark textarea,
+.theme-dark select,
+.theme-dark .dropdown {
+  border-color: var(--forged-border);
+  background: var(--forged-background);
+  color: var(--forged-foreground);
+}
+
+.theme-dark input:focus,
+.theme-dark textarea:focus,
+.theme-dark select:focus {
+  border-color: var(--forged-accent);
+  box-shadow: 0 0 0 2px var(--forged-accent-soft);
+}
+
+/* Graph view */
+.theme-dark .graph-view.color-fill {
+  color: var(--forged-surface-raised);
+}
+
+.theme-dark .graph-view.color-fill-focused {
+  color: var(--forged-accent);
+}
+
+.theme-dark .graph-view.color-line {
+  color: var(--forged-border);
+}
+
+.theme-dark .graph-view.color-text {
+  color: var(--forged-muted);
+}
+
+.theme-dark .graph-view.color-arrow {
+  color: var(--forged-accent);
+}
+
+/* Scrollbars */
+.theme-dark * {
+  scrollbar-color: var(--forged-faint) transparent;
+  scrollbar-width: thin;
+}
+
+.theme-dark ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.theme-dark ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.theme-dark ::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background: var(--forged-faint);
+  background-clip: padding-box;
+}
+
+.theme-dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--forged-muted);
+  background-clip: padding-box;
+}
+
+@media print {
+  .theme-dark {
+    --background-primary: #ffffff;
+    --text-normal: #34393a;
+    --text-muted: #667075;
+    --text-faint: #7c8589;
+    --text-accent: #9b5e40;
+    --code-background: #f3f1ec;
+  }
+
+  .theme-dark .markdown-preview-view {
+    background: #ffffff !important;
+    color: #34393a !important;
+    font-size: 13.2pt;
+  }
+}
